@@ -59,9 +59,9 @@
     <div class="container">
         <div class="mainimgdiv" id="mainimgdiv">
             <img src="" alt="" id="main-img"><br>
-            <button>Previous</button>
+            <button onclick="imgPrevious()">Previous</button>
             <button onclick="close()">Close</button>
-            <button>Next</button>
+            <button onclick="imgNext()">Next</button>
         </div>
         <img src="img/02.jpg" alt="" onclick="imgclick(this.src)">
         <img src="img/CSS.webp" alt="" onclick="imgclick(this.src)">
@@ -71,8 +71,9 @@
         <img src="img/javascript.webp" alt="" onclick="imgclick(this.src)">
     </div>
     <script>
-        mainImg = document.querySelector('#main-img');
-        mainImgDiv = document.querySelector('#mainimgdiv');
+        let mainImg = document.querySelector('#main-img');
+        let mainImgDiv = document.querySelector('#mainimgdiv');
+        let images = document.querySelectorAll('.container > img')
 
         function imgclick(imgSrc) {
             mainImg.src = imgSrc;
@@ -81,6 +82,22 @@
 
         function close() {
             document.querySelector('#mainimgdiv').classList.remove('mainimgtoggle');
+        }
+
+        function imgNext() {
+            for (let i = 0; i < images.length; i++) {
+                if (mainImg.src == images[i].src) {
+                    mainImg.src = images[++i].src;
+                }
+            }
+        }
+
+        function imgPrevious() {
+            for (let i = 0; i < images.length; i++) {
+                if (mainImg.src == images[i].src) {
+                    mainImg.src = images[--i].src;
+                }
+            }
         }
     </script>
 </body>
